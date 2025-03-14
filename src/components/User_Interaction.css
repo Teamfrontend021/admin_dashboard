@@ -80,7 +80,7 @@
 
 /* Export Button */
 .export-btn {
-  background: #007bff;
+  background: #284974;
   color: white;
   padding: 8px 16px;
   right: 40px;
@@ -92,7 +92,7 @@
 }
 
 .export-btn:hover {
-  background: #0056b3;
+  background: #284974;
 }
 
 .user-interaction-container {
@@ -161,7 +161,7 @@
 }
 
 .export-btn {
-  background: #007bff;
+  background: #284974;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -171,7 +171,7 @@
 }
 
 .export-btn:hover {
-  background: #0056b3;
+  background: #284974;
 }
 
 /* Impressions and Growth Rate Sections */

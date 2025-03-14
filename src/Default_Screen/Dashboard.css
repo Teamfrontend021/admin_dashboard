@@ -14,7 +14,6 @@
   width: 90vw;
 }
 
-
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
@@ -53,7 +52,7 @@
   font-weight: bold;
 }
 .blue {
-  color: #2563eb;
+  color: #284974;
 }
 .green {
   color: #10b981;

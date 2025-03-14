@@ -32,7 +32,7 @@ export default function MarketAnalysis() {
               labels: ['Instagram', 'Facebook', 'LinkedIn'],
               datasets: [{
                 data: [15, 30, 55],
-                backgroundColor: ['#16A34A', '#3B82F6', '#2563EB']
+                backgroundColor: ['#284974', '#38BDF8', '#DBEAFE']
               }]
             }} />
           </div>
@@ -44,7 +44,7 @@ export default function MarketAnalysis() {
               datasets: [{
                 label: 'Conversion Rate',
                 data: [20, 33, 45],
-                backgroundColor: ['#16A34A', '#3B82F6', '#2563EB']
+                backgroundColor: ['#284974', '#38BDF8', '#DBEAFE']
               }]
             }} />
           </div>

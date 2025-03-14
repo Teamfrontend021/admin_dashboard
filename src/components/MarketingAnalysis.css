@@ -1,16 +1,7 @@
-
 .Marketing {
   display: flex;
   min-height: 100vh;
   padding: 20px;
-}
-
-.sidebar {
-  background: #ffffff;
-  padding: 20px;
-  width: 250px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-content {
@@ -36,7 +27,7 @@
 }
 
 .gradient-card {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #284974, #284974);
   color: white;
 }
 
@@ -73,6 +64,6 @@ table td {
 }
 
 table th {
-  background: #2563eb;
+  background: #284974;
   color: white;
 }
