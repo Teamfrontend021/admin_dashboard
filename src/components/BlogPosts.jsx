@@ -17,7 +17,7 @@ const BlogPosts = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setPosts(data.articles.slice(0, 6)); // Fetching top 6 articles
+        setPosts(data.articles.slice(0, 9)); // Fetching top 9 articles
       } catch (error) {
         setError(`Error fetching news: ${error.message}`);
       } finally {
@@ -39,8 +39,43 @@ const BlogPosts = () => {
   return (
     <div className="blog-posts-container">
       <h1 className="blog-posts-title">Corporate Posts</h1>
+      
+      {/* First Row (6 Articles) */}
       <div className="blog-posts-grid">
-        {posts.map((post, index) => (
+        {posts.slice(0, 6).map((post, index) => (
+          <div key={index} className="blog-post-card">
+            <img
+              src={post.urlToImage || "https://via.placeholder.com/200"}
+              alt={post.title}
+              className="blog-post-image"
+            />
+            <h2 className="blog-post-title">{post.title}</h2>
+            <p className="blog-post-date">
+              {new Date(post.publishedAt).toDateString()} |{" "}
+              <span className="category-text">Business</span>
+            </p>
+            <p className="blog-post-description">
+              {post.description
+                ? post.description.length > 100
+                  ? post.description.substring(0, 100) + "..."
+                  : post.description
+                : "No description available."}
+            </p>
+            <a
+              href={post.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="blog-post-link"
+            >
+              Read more →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      {/* Second Row (3 Articles) */}
+      <div className="blog-posts-grid second-row">
+        {posts.slice(6, 9).map((post, index) => (
           <div key={index} className="blog-post-card">
             <img
               src={post.urlToImage || "https://via.placeholder.com/200"}
