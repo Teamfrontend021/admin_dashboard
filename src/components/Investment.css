@@ -1,25 +1,25 @@
-.Marketing-dashboard {
-  width: 70vw;
-  margin-right: -15px;
+.div {
+  box-sizing: border-box;
 }
 
-.Marketing {
+.dashboard-container {
   display: flex;
-  min-height: 100vh;
+  left: -10px;
+  min-height: auto;
+  background: #f5f6fa;
   padding: 20px;
-  width: 100vw;
 }
 
-.mark-content {
+.investment-content {
   flex: 1;
-  width: 1000px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-left: 20px;
 }
 
-.stats-cards {
+.stats-cards,
+.financial-section {
   display: flex;
   gap: 20px;
 }
@@ -33,9 +33,23 @@
   text-align: center;
 }
 
+.small_card {
+  height: 100px;
+  background: #ffffff;
+  padding: 20px;
+}
+
 .gradient-card {
-  background: linear-gradient(135deg, #284974, #284974);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
   color: white;
+}
+
+.positive {
+  color: #16a34a;
+}
+
+.negative {
+  color: #dc2626;
 }
 
 .charts-section {
@@ -49,28 +63,4 @@
   flex: 1;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.table-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table th,
-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-table th {
-  background: #284974;
-  color: white;
 }

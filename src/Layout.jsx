@@ -46,6 +46,8 @@ export default function Layout() {
                             <ul className="dropdown-menu">
                                 <li onClick={() => navigate("/signup")}>Sign Up</li>
                                 <li onClick={() => navigate("/login")}>Login</li>
+
+
                             </ul>
                         )}
                     </li>

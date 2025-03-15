@@ -7,7 +7,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarEle
 export default function MarketAnalysis() {
   return (
     <main className="Marketing">
-      <div className="main-content">
+      <div className='Marketing-dashboard'>
+      <div className="Mark-content">
         {/* Top Statistics */}
         <div className="stats-cards">
           <div className="card gradient-card">
@@ -84,6 +85,7 @@ export default function MarketAnalysis() {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </main>
   );

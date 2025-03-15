@@ -1,41 +1,18 @@
-.layout-container {
-  display: flex;
-  height: 100vh;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  position: fixed; /* Make header fixed */
-  width: 100%; /* Ensure header spans full width */
-  top: 0; /* Align header to the top */
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: #e5e7eb;
-  padding: 8px;
-  margin-left: 15%;
-  border-radius: 8px;
-  width: 35%;
-}
-
 .search-icon {
   color: #6b7280;
   margin-right: 10px;
+}
+
+.search-box {
+  width: 500px;
 }
 
 .search-box input {
   border: none;
   background: transparent;
   outline: none;
-  width: 100%;
+  margin-left: 20px;
+  width: 70%;
 }
 
 .user-actions {
@@ -54,26 +31,49 @@
 }
 
 .sidebar {
-  width: 250px;
   background-color: #2c3e50;
   color: white;
   padding: 20px;
   min-height: 100vh;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 12%;
+  background: linear-gradient(to bottom, #284974, #001128);
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-list {
   list-style: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 .nav-list li {
   padding: 10px 0;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
 }
 
 .nav-list a {
   text-decoration: none;
   color: white;
   display: block;
+}
+
+.nav-list li:hover {
+  color: #dbeafe;
+}
+
+.nav-list li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  transition: background 0.3s;
 }
 
 .dropdown-button {
@@ -110,45 +110,13 @@
 
 .user-name {
   font-weight: bold;
-}
-
-/* Removed duplicate sidebar definition */
-.sidebar {
-  width: 250px;
-  background: #222;
-  color: white;
-  padding: 20px;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
+  margin-right: 80px;
 }
 
 .sidebar .logo {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-}
-
-.nav-list li {
-  margin: 15px 0;
-}
-
-.nav-list li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  transition: background 0.3s;
-}
-
-.nav-list li a:hover {
-  background: #444;
 }
 
 .main-content {
@@ -158,38 +126,22 @@
   padding: 20px;
 }
 
-.dashboard-container {
-  display: flex;
-  height: 100vh; /* Ensure full height */
-  background: #f3f4f6;
-}
-
-.sidebar {
-  width: 10%;
-  background: linear-gradient(to bottom, #284974, #001128);
-  padding: 20px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
 .logo {
   font-size: 24px;
   font-weight: bold;
 }
 
-.nav-list {
-  margin-top: 20px;
-  list-style: none;
-  padding: 0;
-}
-
-.nav-list li {
-  padding: 10px 0;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-list li:hover {
-  color: #dbeafe;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Make header fixed */
+  width: calc(100% - 12%); /* Adjust width considering the sidebar width */
+  top: 0; /* Align header to the top */
+  left: 15%; /* Adjust position to avoid overlapping with sidebar */
+  z-index: 1000; /* Ensure it appears above other elements */
 }
