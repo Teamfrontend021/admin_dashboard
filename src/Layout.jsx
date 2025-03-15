@@ -32,7 +32,7 @@ export default function Layout() {
             <aside className="sidebar">
                 <h1 className="logo">NexVest</h1>
                 <ul className="nav-list">
-                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><Link to="/Dashboard">Dashboard</Link></li>
                     
                     {/* Form Elements with Expanding Dropdown */}
                     <li className="dropdown">
@@ -52,10 +52,10 @@ export default function Layout() {
                         )}
                     </li>
 
-                    <li><Link to="/user-interaction">User Interaction</Link></li>
-                    <li><Link to="/investment">Investment Analysis</Link></li>
-                    <li><Link to="/marketing">Marketing Overview</Link></li>
-                    <li><Link to="/news">News and Blog</Link></li>
+                    <li><Link to="/User_Interaction">User Interaction</Link></li>
+                    <li><Link to="/Investment">Investment Analysis</Link></li>
+                    <li><Link to="/Marketing">Marketing Overview</Link></li>
+                    <li><Link to="/BlogPosts">News and Blog</Link></li>
                 </ul>
             </aside>
 

@@ -33,13 +33,13 @@ export default function App() {
                         isAuthenticated ? (
                             <Layout>
                                 <Routes>
-                                    <Route path="dashboard" element={<Dashboard />} />
-                                    <Route path="form-elements" element={<Form_elements />} />
-                                    <Route path="user-interaction" element={<User_interaction />} />
-                                    <Route path="investment" element={<Investment />} />
-                                    <Route path="marketing" element={<Marketing />} />
-                                    <Route path="news-and-blog" element={<NewsAndBlog />} />
-                                    <Route path="*" element={<Navigate to="/dashboard" />} />
+                                    <Route path="Dashboard" element={<Dashboard />} />
+                                    <Route path="Form-elements" element={<Form_elements />} />
+                                    <Route path="User-Interaction" element={<User_interaction />} />
+                                    <Route path="Investment" element={<Investment />} />
+                                    <Route path="Marketing" element={<Marketing />} />
+                                    <Route path="BlogPosts" element={<NewsAndBlog />} />
+                                    <Route path="*" element={<Navigate to="/Dashboard" />} />
                                 </Routes>
                             </Layout>
                         ) : (
