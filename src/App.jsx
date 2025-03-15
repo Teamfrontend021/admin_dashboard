@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Layout";
 import Dashboard from "./Default_Screen/Dashboard";
-import Form_elements from "./components/Form_elements";
+import Form_elements1 from "./components/Form_elements1";
+import Form_elements2 from "./components/Form_elements2";
 import User_interaction from "./components/User_interaction";
 import Investment from "./components/Investment";
 import Marketing from "./components/Marketing";
@@ -34,7 +35,8 @@ export default function App() {
                     element={isAuthenticated ? <Layout /> : <Navigate to="/login" />}
                 >
                     <Route path="dashboard" element={<Dashboard />} />
-                    <Route path="form-elements" element={<Form_elements />} />
+                    <Route path="form-elements1" element={<Form_elements1 />} />
+                    <Route path="form-elements2" element={<Form_elements2 />} />
                     <Route path="user-interaction" element={<User_interaction />} />
                     <Route path="investment" element={<Investment />} />
                     <Route path="marketing" element={<Marketing />} />
@@ -45,3 +47,4 @@ export default function App() {
         </Router>
     );
 }
+ 

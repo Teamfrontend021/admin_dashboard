@@ -42,8 +42,9 @@ export default function Layout() {
         </button>
         {isDropdownOpen && (
             <ul className="dropdown-menu">
-                <li onClick={() => navigate("/signup")}>Sign Up</li>
-                <li onClick={() => navigate("/login")}>Login</li>
+                <li onClick={() => navigate("/form-elements1")}>Sign Up</li>
+                <li onClick={() => navigate("/form-elements2")}>Login</li>
+
             </ul>
         )}
     </li>

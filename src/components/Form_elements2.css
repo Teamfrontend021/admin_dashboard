@@ -1,0 +1,36 @@
+.from1-container {
+  display: flex;
+  margin-left: -15%;
+}
+
+.form-content {
+  flex: 1;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.form2-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 70px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form2-card {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.form2-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background: #e9ecef;
+  padding: 5px;
+  border-radius: 5px;
+}

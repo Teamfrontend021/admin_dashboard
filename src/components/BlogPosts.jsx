@@ -1,48 +1,71 @@
 import React, { useEffect, useState } from "react";
+import "./BlogPosts.css";
 
-const API_URL = "https://newsapi.org/v2/top-headlines?category=business&apiKey=6e385cc964a9492d8f2f67e479c475a7";
+const API_URL =
+  "https://newsapi.org/v2/top-headlines?category=business&apiKey=6e385cc964a9492d8f2f67e479c475a7";
 
 const BlogPosts = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
-        setPosts(data.articles.slice(0, 3)); // Display only the top 3 articles
+        setPosts(data.articles.slice(0, 6)); // Fetching top 6 articles
       } catch (error) {
-        console.error("Error fetching news:", error);
+        setError(`Error fetching news: ${error.message}`);
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchNews();
   }, []);
 
+  if (loading) {
+    return <div className="loading-text">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="error-text">{error}</div>;
+  }
+
   return (
-    <div className="bg-gray-100 py-10 px-5">
-      <h1 className="text-5xl font-bold text-center text-purple-900 mb-10">
-        Corporate Posts
-      </h1>
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div className="blog-posts-container">
+      <h1 className="blog-posts-title">Corporate Posts</h1>
+      <div className="blog-posts-grid">
         {posts.map((post, index) => (
-          <div key={index} className="bg-white p-4 rounded-lg shadow-lg">
+          <div key={index} className="blog-post-card">
             <img
-              src={post.urlToImage || "https://via.placeholder.com/300"}
+              src={post.urlToImage || "https://via.placeholder.com/200"}
               alt={post.title}
-              className="w-full h-48 object-cover rounded-md"
+              className="blog-post-image"
             />
-            <h2 className="text-xl font-semibold mt-4">{post.title}</h2>
-            <p className="text-sm text-gray-600 mt-1">
-              {new Date(post.publishedAt).toDateString()} | <span className="text-purple-700 font-bold">Business</span>
+            <h2 className="blog-post-title">{post.title}</h2>
+            <p className="blog-post-date">
+              {new Date(post.publishedAt).toDateString()} |{" "}
+              <span className="category-text">Business</span>
             </p>
-            <p className="text-gray-700 mt-3">{post.description}</p>
+            <p className="blog-post-description">
+              {post.description
+                ? post.description.length > 100
+                  ? post.description.substring(0, 100) + "..."
+                  : post.description
+                : "No description available."}
+            </p>
             <a
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 font-semibold mt-2 inline-block"
+              className="blog-post-link"
             >
-              Read more
+              Read more →
             </a>
           </div>
         ))}
