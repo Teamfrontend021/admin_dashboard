@@ -35,10 +35,10 @@ export default function App() {
                                 <Routes>
                                     <Route path="Dashboard" element={<Dashboard />} />
                                     <Route path="Form-elements" element={<Form_elements />} />
-                                    <Route path="User-Interaction" element={<User_interaction />} />
+                                    <Route path="User-interaction" element={<User_interaction />} />
                                     <Route path="Investment" element={<Investment />} />
                                     <Route path="Marketing" element={<Marketing />} />
-                                    <Route path="BlogPosts" element={<NewsAndBlog />} />
+                                    <Route path="BlogPosts" element={<BlogPosts />} />
                                     <Route path="*" element={<Navigate to="/Dashboard" />} />
                                 </Routes>
                             </Layout>

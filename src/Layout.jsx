@@ -52,7 +52,7 @@ export default function Layout() {
                         )}
                     </li>
 
-                    <li><Link to="/User_Interaction">User Interaction</Link></li>
+                    <li><Link to="/User_interaction">User Interaction</Link></li>
                     <li><Link to="/Investment">Investment Analysis</Link></li>
                     <li><Link to="/Marketing">Marketing Overview</Link></li>
                     <li><Link to="/BlogPosts">News and Blog</Link></li>
