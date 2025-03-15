@@ -4,7 +4,7 @@ import "./Dashboard.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement);
 
-export default function MarketAnalysis() {
+export default function Dashboard() {
   return (
     <main className="dashboard-container">
       <div className="dashboard-header">

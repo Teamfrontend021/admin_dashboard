@@ -32,31 +32,26 @@ export default function Layout() {
             <aside className="sidebar">
                 <h1 className="logo">NexVest</h1>
                 <ul className="nav-list">
-                    <li><Link to="/Dashboard">Dashboard</Link></li>
-                    
-                    {/* Form Elements with Expanding Dropdown */}
-                    <li className="dropdown">
-                        <button 
-                            className="dropdown-button" 
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        >
-                            Form Elements ▾
-                        </button>
-                        {isDropdownOpen && (
-                            <ul className="dropdown-menu">
-                                <li onClick={() => navigate("/signup")}>Sign Up</li>
-                                <li onClick={() => navigate("/login")}>Login</li>
-
-
-                            </ul>
-                        )}
-                    </li>
-
-                    <li><Link to="/User_interaction">User Interaction</Link></li>
-                    <li><Link to="/Investment">Investment Analysis</Link></li>
-                    <li><Link to="/Marketing">Marketing Overview</Link></li>
-                    <li><Link to="/BlogPosts">News and Blog</Link></li>
-                </ul>
+    <li><Link to="/dashboard">Dashboard</Link></li> {/* Changed from /Dashboard */}
+    <li className="dropdown">
+        <button 
+            className="dropdown-button" 
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+            Form Elements ▾
+        </button>
+        {isDropdownOpen && (
+            <ul className="dropdown-menu">
+                <li onClick={() => navigate("/signup")}>Sign Up</li>
+                <li onClick={() => navigate("/login")}>Login</li>
+            </ul>
+        )}
+    </li>
+    <li><Link to="/user-interaction">User Interaction</Link></li>
+    <li><Link to="/investment">Investment Analysis</Link></li>
+    <li><Link to="/marketing">Marketing Overview</Link></li>
+    <li><Link to="/news-and-blog">News and Blog</Link></li>
+</ul>
             </aside>
 
             {/* Dynamic Main Content */}
