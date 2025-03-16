@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "./App.css"; 
+import finance_graph from "./finance-graph.svg";
 
 export function Login({ setIsAuthenticated }) {
     const [email, setEmail] = useState("");
@@ -24,7 +26,6 @@ export function Login({ setIsAuthenticated }) {
 
             localStorage.setItem("token", data.token);
             setIsAuthenticated(true);
-            // Redirect to dashboard upon successful login
             navigate("/dashboard");
         } catch (err) {
             setError(err.message);
@@ -33,14 +34,30 @@ export function Login({ setIsAuthenticated }) {
 
     return (
         <div className="auth-container">
-            <h1>Login</h1>
-            {error && <p className="error">{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button type="submit">Login</button>
-            </form>
-            <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+            <div className="auth-left">
+                <h2>Welcome to <span className="brand-name">NEXVEST</span></h2>
+                <p>Your Next Big Investment Starts Here.</p>
+                <img src={finance_graph} alt="Finance Graph" className="finance-graph" />
+            </div>
+
+            <div className="auth-right">
+                <h1>Login</h1>
+                {error && <p className="error">{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    
+                    <button type="submit">Login</button>
+                </form>
+
+                <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+
+                <div className="google-signup">
+                    <button className="google-button">
+                        Sign in with Google
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
