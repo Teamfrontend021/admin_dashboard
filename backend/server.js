@@ -1,4 +1,10 @@
 import express from "express";
+import { fileURLToPath } from 'url'; // Import fileURLToPath
+import { dirname } from 'path'; // Import dirname
+
+const __filename = fileURLToPath(import.meta.url); // Define __filename
+const __dirname = dirname(__filename); // Define __dirname
+
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import bcrypt from "bcryptjs";
@@ -20,6 +26,8 @@ mongoose.connect("mongodb+srv://varshini:admin@cluster0.xlcqu.mongodb.net/my-dat
 })
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
+
+console.log("Server started on port", PORT);
 
 // Signup Route
 app.post('/signup', async (req, res) => {
@@ -63,7 +71,37 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.get('/profile', async (req, res) => {
+    const token = req.headers.authorization?.split(" ")[1]; // Get token from headers
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+    try {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const user = await User.findById(decoded.id).select("-password"); // Exclude password from response
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        res.status(200).json({
+            name: user.username,
+            email: user.email,
+            avatar: user.avatar // Assuming avatar is a field in the User model
+        });
+    } catch (error) {
+        res.status(400).json({ message: "Error fetching user profile details", error: error.message });
+    }
+});
+
+import path from "path"; // Import path module
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back the React app.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
+
 // Start Server
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

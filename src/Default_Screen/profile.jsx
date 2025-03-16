@@ -7,11 +7,27 @@ const Profile = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
-    // Simulated API call to fetch user data
-    fetch("https://api.example.com/user") // Replace with real API
-      .then((response) => response.json())
-      .then((data) => setUser(data))
-      .catch((error) => console.error("Error fetching user data:", error));
+    // Fetch user data from the backend API
+    const fetchUserData = async () => {
+      const token = localStorage.getItem("token"); // Retrieve token from local storage
+      try {
+        const response = await fetch("http://localhost:5000/user", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await response.json();
+        setUser(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   if (!user) {
