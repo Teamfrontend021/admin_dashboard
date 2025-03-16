@@ -24,22 +24,25 @@ export default function App() {
 
     return (
         <Router>
-            <Routes>
-                {/* Public Routes */}
-                <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated} />} />
-                <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+    <Routes>
+        {/* Public Routes */}
+        <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
 
-                {/* Protected Routes */}
-                <Route path="/" element={isAuthenticated ? <Layout /> : <Navigate to="/login" />} />
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="form-elements1" element={<Form_elements1 />} />
-                <Route path="form-elements2" element={<Form_elements2 />} />
-                <Route path="user-interaction" element={<User_interaction />} />
-                <Route path="investment" element={<Investment />} />
-                <Route path="marketing" element={<Marketing />} />
-                <Route path="news-and-blog" element={<BlogPosts />} />
-                <Route path="*" element={<Navigate to="/dashboard" />} />
-            </Routes>
-        </Router>
+        {/* Protected Routes */}
+        <Route element={isAuthenticated ? <Layout /> : <Navigate to="/login" />} >
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/form-elements1" element={<Form_elements1 />} />
+            <Route path="/form-elements2" element={<Form_elements2 />} />
+            <Route path="/user-interaction" element={<User_interaction />} />
+            <Route path="/investment" element={<Investment />} />
+            <Route path="/marketing" element={<Marketing />} />
+            <Route path="/news-and-blog" element={<BlogPosts />} />
+        </Route>
+
+        {/* Default redirect */}
+        <Route path="*" element={<Navigate to="/login" />} />
+    </Routes>
+</Router>
     );
 }

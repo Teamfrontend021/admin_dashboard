@@ -24,7 +24,6 @@ export default function Layout() {
                 <div className="user-actions">
                     <Bell className="icon" />
                     <User className="icon" />
-                    <Profile />
                 </div>
             </div>
             
