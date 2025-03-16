@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, LogarithmicScale } from "chart.js";
 import "./investment.css";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
+// Register the logarithmic scale along with other Chart.js components
+ChartJS.register(CategoryScale, LinearScale, LogarithmicScale, PointElement, LineElement, Tooltip, Legend);
 
 export default function Investment() {
   const [goldRates, setGoldRates] = useState([]);
@@ -18,11 +19,53 @@ export default function Investment() {
         const pastYears = Array.from({ length: 10 }, (_, i) => currentYear - 9 + i);
         setYears(pastYears);
 
-        // Mock data (approximate gold rates in INR per gram from 2016 to 2025)
-        const mockGoldRates = [30, 32, 35, 40, 45, 50, 55, 60, 65, 70];
-        setGoldRates(mockGoldRates);
+        const apiKey = "9f711b6d4905d2a6195ca62da4c2b81f"; // Replace with your GoldAPI.io API key after signing up
+
+        const fetchedRates = await Promise.all(
+          pastYears.map(async (year) => {
+            try {
+              // Adjust the date for 2025 to a more recent date (e.g., March 1, 2025)
+              const date = year === 2025 ? `${year}-03-01` : `${year}-01-01`;
+              const response = await fetch(
+                `https://www.goldapi.io/api/XAU/INR/${date}?api_key=${apiKey}`
+              );
+              if (!response.ok) {
+                throw new Error(`Failed to fetch data for ${year}: ${response.statusText}`);
+              }
+              const data = await response.json();
+              console.log(`Data for ${year}:`, data); // Log the response for debugging
+
+              if (data.price_gram_24k) {
+                return data.price_gram_24k; // Use the per-gram price if available
+              } else if (data.price) {
+                const ratePerOunce = data.price; // Price per troy ounce in INR
+                const ratePerGram = ratePerOunce / 31.1035; // Convert to price per gram
+                return ratePerGram;
+              } else {
+                throw new Error(`Invalid response structure for ${year}`);
+              }
+            } catch (error) {
+              console.error(`Error fetching data for ${year}:`, error.message);
+              return null; // Return null for failed years, filter later
+            }
+          })
+        );
+
+        // Filter out null values from failed requests
+        const validRates = fetchedRates.filter(rate => rate !== null);
+        if (validRates.length === 0) {
+          // Fallback to mock data if API fails completely
+          console.warn("API failed to fetch any rates. Using mock data as fallback.");
+          const mockGoldRates = [3000, 3100, 3200, 3500, 5000, 4800, 5200, 6000, 7770, 8967];
+          setGoldRates(mockGoldRates);
+        } else {
+          setGoldRates(validRates);
+        }
       } catch (error) {
         console.error("Error fetching historical gold rates:", error);
+        // Fallback to mock data if API fails
+        const mockGoldRates = [300, 310, 320, 350, 500, 480, 520, 600, 777, 8967];
+        setGoldRates(mockGoldRates);
       } finally {
         setLoading(false);
       }
@@ -44,11 +87,11 @@ export default function Investment() {
       <div className="investment-content">
         {/* Top Statistics */}
         <div className="stats-cards">
-          <div className="card gradient-card">
+          <div className="card">
             <h4>Current Rate</h4>
             <h2>INR {goldRates[goldRates.length - 1].toFixed(2)} / gram</h2>
           </div>
-          <div className="card gradient-card">
+          <div className="card ">
             <h4>On-time Completion Rate</h4>
             <h2>
               40% <span className="positive">+12%</span>
@@ -67,28 +110,84 @@ export default function Investment() {
                   {
                     label: "Gold Rate (INR per gram)",
                     data: goldRates,
-                    borderColor: "#2563EB",
-                    backgroundColor: "rgba(37, 99, 235, 0.2)",
+                    borderColor: "#00C4B4",
+                    backgroundColor: (context) => {
+                      const ctx = context.chart.ctx;
+                      const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                      gradient.addColorStop(0, "rgba(0, 196, 180, 0.2)");
+                      gradient.addColorStop(1, "rgba(0, 196, 180, 0)");
+                      return gradient;
+                    },
                     fill: true,
-                    tension: 0.3,
+                    tension: 0,
+                    pointRadius: 0,
+                    borderWidth: 2,
                   },
                 ],
               }}
               options={{
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                   y: {
-                    beginAtZero: true,
-                    suggestedMax: 80,
+                    type: "logarithmic",
+                    min: 100,
+                    max: 10000,
                     title: {
                       display: true,
-                      text: "INR per gram",
+                      text: "INR/g",
+                      font: {
+                        size: 12,
+                        weight: "normal",
+                      },
+                      color: "#666",
+                    },
+                    ticks: {
+                      callback: (value) => `₹${Math.round(value)}`,
+                      maxTicksLimit: 6,
+                      font: {
+                        size: 12,
+                      },
+                      color: "#666",
+                      padding: 5,
+                    },
+                    grid: {
+                      display: false,
                     },
                   },
                   x: {
                     title: {
                       display: true,
-                      text: "Year",
+                        text: "Year",
+                      font: {
+                        size: 12,
+                        weight: "normal",
+                      },
+                      color: "#666",
                     },
+                    ticks: {
+                      maxTicksLimit: 10,
+                    },
+                    grid: {
+                      display: false,
+                    },
+                  },
+                },
+                plugins: {
+                  legend: {
+                    display: false,
+                  },
+                  tooltip: {
+                    mode: "index",
+                    intersect: false,
+                    callbacks: {
+                      label: (context) => `₹${context.parsed.y.toFixed(2)} / gram`,
+                    },
+                  },
+                },
+                elements: {
+                  line: {
+                    borderJoinStyle: "miter",
                   },
                 },
               }}
