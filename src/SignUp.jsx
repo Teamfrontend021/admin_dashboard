@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./App.css"; // Ensure this file contains styles matching your design
 import finance_graph from "./finance-graph.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export function SignUp({ setIsAuthenticated }) {
     const [name, setName] = useState("");
@@ -25,7 +27,7 @@ export function SignUp({ setIsAuthenticated }) {
             const response = await fetch("http://localhost:5000/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, password }),
+                body: JSON.stringify({ username: name, email, password }),
             });
 
             const data = await response.json();
@@ -61,7 +63,7 @@ export function SignUp({ setIsAuthenticated }) {
 
                 <div className="google-signup">
                     <button className="google-button">
-                        Sign-Up with Google
+                        <FontAwesomeIcon icon={faGoogle} /> Sign-Up with Google
                     </button>
                 </div>
 
