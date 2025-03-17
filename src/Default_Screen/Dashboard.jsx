@@ -1,6 +1,7 @@
 import { Line, Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement } from "chart.js";
 import "./Dashboard.css";
+import GenderStatistics from "../components/ui/GenderStatistics";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement);
 
@@ -10,7 +11,6 @@ export default function Dashboard() {
       <div className="dashboard-header">
         <h2 className="dashboard-title">📊 Day-wise Sign Up Details</h2>
       </div>
-      
       <div className="dashboard-grid">
         {/* Activity Chart */}
         <div className="card chart-card activity-card">
@@ -57,16 +57,7 @@ export default function Dashboard() {
         </div>
 
         {/* Gender Statistics */}
-        <div className="card chart-card gender-card">
-          <h4>Gender Statistics</h4>
-          <Doughnut data={{
-            labels: ["Women", "Men"],
-            datasets: [{
-              data: [2300, 274],
-              backgroundColor: ["#2563EB", "#60A5FA"]
-            }]
-          }} />
-        </div>
+        <GenderStatistics />
       </div>
     </main>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./App.css"; // Ensure this file contains styles matching your design
-import finance_graph from "./finance-graph.svg";
+import finance_graph from "./components/assets/finance-graph.svg"; // Absolute path
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function SignUp({ setIsAuthenticated }) {

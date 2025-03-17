@@ -8,7 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import "./Form_elements2.css";
+import "../styles/Form_elements2.css";
 
 const profileVisitsData = [
   { name: "Sunday", visits: 12000 },

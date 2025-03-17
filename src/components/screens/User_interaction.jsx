@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
-import "./User_Interaction.css";
+import "../styles/User_Interaction.css";
 
 export default function UserInteraction() {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);

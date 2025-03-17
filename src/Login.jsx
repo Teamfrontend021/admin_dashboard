@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./App.css"; 
-import finance_graph from "./finance-graph.svg";
+import finance_graph from "./components/assets/finance-graph.svg"; // Absolute path
 
 export function Login({ setIsAuthenticated }) {
     const [email, setEmail] = useState("");

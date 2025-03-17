@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, LogarithmicScale } from "chart.js";
-import "./investment.css";
+import "../styles/investment.css";
 
 // Register the logarithmic scale along with other Chart.js components
 ChartJS.register(CategoryScale, LinearScale, LogarithmicScale, PointElement, LineElement, Tooltip, Legend);

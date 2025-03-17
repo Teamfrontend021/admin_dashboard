@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./BlogPosts.css";
+import "../styles/BlogPosts.css";
 
 const API_URL =
   "https://newsapi.org/v2/top-headlines?category=business&apiKey=6e385cc964a9492d8f2f67e479c475a7";

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Layout";
 import Dashboard from "./Default_Screen/Dashboard";
-import Form_elements1 from "./components/Form_elements1";
-import Form_elements2 from "./components/Form_elements2";
-import User_interaction from "./components/User_interaction";
-import Investment from "./components/Investment";
-import Marketing from "./components/Marketing";
-import BlogPosts from "./components/BlogPosts";
+import Form_elements1 from "./components/screens/Form_elements1";
+import Form_elements2 from "./components/screens/Form_elements2";
+import User_interaction from "./components/screens/User_interaction";
+import Investment from "./components/screens/Investment";
+import Marketing from "./components/screens/Marketing";
+import BlogPosts from "./components/screens/BlogPosts";
 import { Login } from "./Login"; // Ensure correct path
 import { SignUp } from "./SignUp"; // Ensure correct path
 import "./App.css";
