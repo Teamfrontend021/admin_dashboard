@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import "./App.css"; // Ensure this file contains styles matching your design
 import finance_graph from "./finance-graph.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export function SignUp({ setIsAuthenticated }) {
     const [name, setName] = useState("");

@@ -38,19 +38,19 @@ export default function Dashboard() {
 
         {/* Statistics Cards */}
         <div className="stats-container">
-          <div className="card stat-card">
+          <div className="scard state-card">
             <h4>Total Count</h4>
             <h2>1,10,987</h2>
           </div>
-          <div className="card stat-card">
+          <div className="scard state-card">
             <h4>New Users This Week</h4>
             <h2>546 <span className="negative">-5%</span></h2>
           </div>
-          <div className="card stat-card">
+          <div className="scard state-card">
             <h4>New Users This Month</h4>
             <h2>7,632 <span className="positive">+12%</span></h2>
           </div>
-          <div className="card stat-card">
+          <div className="scard state-card">
             <h4>User Increment</h4>
             <h2>5% <span className="positive">✅</span></h2>
           </div>
