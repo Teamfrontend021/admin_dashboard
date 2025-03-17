@@ -11,15 +11,15 @@ export default function MarketAnalysis() {
       <div className="Mark-content">
         {/* Top Statistics */}
         <div className="stats-cards">
-          <div className="card gradient-card">
+          <div className="card ">
             <h4>Total Users Tracked</h4>
             <h2>10,000</h2>
           </div>
-          <div className="card gradient-card">
+          <div className="card ">
             <h4>Top Referral Source</h4>
             <h2>LinkedIn: 60%</h2>
           </div>
-          <div className="card gradient-card">
+          <div className="card ">
             <h4>Conversion Rate</h4>
             <h2>35%</h2>
           </div>
@@ -27,7 +27,7 @@ export default function MarketAnalysis() {
         
         {/* Graph Section */}
         <div className="charts-section">
-          <div className="chart-card">
+          <div className="charte-card">
             <h4>Referral Sources</h4>
             <Pie data={{
               labels: ['Instagram', 'Facebook', 'LinkedIn'],
@@ -38,7 +38,7 @@ export default function MarketAnalysis() {
             }} />
           </div>
 
-          <div className="chart-card">
+          <div className="charte-card">
             <h4>Conversion Rate by Platform</h4>
             <Bar data={{
               labels: ['Instagram', 'Facebook', 'LinkedIn'],
