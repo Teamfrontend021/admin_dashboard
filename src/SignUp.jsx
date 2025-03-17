@@ -61,13 +61,7 @@ export function SignUp({ setIsAuthenticated }) {
                     <button type="submit">Register Now</button>
                 </form>
 
-                <div className="google-signup">
-                    <button className="google-button">
-                        <FontAwesomeIcon icon={faGoogle} /> Sign-Up with Google
-                    </button>
-                </div>
-
-                <p>Already have an account? <Link to="/login">Sign in</Link></p>
+                <p>Already have an account? <Link to="/login">log in</Link></p>
             </div>
         </div>
     );

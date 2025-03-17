@@ -52,11 +52,6 @@ export function Login({ setIsAuthenticated }) {
 
                 <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
 
-                <div className="google-signup">
-                    <button className="google-button">
-                        Sign in with Google
-                    </button>
-                </div>
             </div>
         </div>
     );

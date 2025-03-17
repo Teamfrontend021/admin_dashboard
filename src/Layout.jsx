@@ -24,6 +24,7 @@ export default function Layout() {
                 <div className="user-actions">
                     <Bell className="icon" />
                     <User className="icon" />
+                    <span className="user-name">Nathan Caldwell</span>
                 </div>
             </div>
             
