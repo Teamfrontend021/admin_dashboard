@@ -39,7 +39,6 @@ const BlogPosts = () => {
   return (
     <div className="blog-posts-container">
       <h1 className="blog-posts-title">Corporate Posts</h1>
-      
       {/* First Row (6 Articles) */}
       <div className="blog-posts-grid">
         {posts.slice(0, 6).map((post, index) => (

@@ -83,7 +83,7 @@ app.get('/profile', async (req, res) => {
         res.status(200).json({
             name: user.username,
             email: user.email,
-            avatar: user.avatar // Assuming avatar is a field in the User model
+            avatar: user.avatar 
         });
     } catch (error) {
         res.status(400).json({ message: "Error fetching user profile details", error: error.message });
@@ -92,10 +92,8 @@ app.get('/profile', async (req, res) => {
 
 import path from "path"; // Import path module
 
-// Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-// The "catchall" handler: for any request that doesn't match one above, send back the React app.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });

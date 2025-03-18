@@ -26,9 +26,7 @@ export default function Layout() {
                     <User className="icon" />
                     <span className="user-name">Nathan Caldwell</span>
                 </div>
-            </div>
-            
-            {/* Fixed Sidebar */}
+            </div>            {/* Fixed Sidebar */}
             <aside className="sidebar">
                 <h1 className="logo">NexVest</h1>
                 <ul className="nav-list">
