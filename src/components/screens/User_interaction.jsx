@@ -9,7 +9,6 @@ export default function UserInteraction() {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [startDate, endDate] = dateRange;
 
-  // Sample Data for Charts
   const chartData = [
     { name: "Jan", value: 20 },
     { name: "Feb", value: 30 },

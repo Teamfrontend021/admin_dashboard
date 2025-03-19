@@ -1,13 +1,19 @@
 .Marketing-dashboard {
   width: 70vw;
-  margin-right: -15px;
+  margin-right: -8px;
+}
+
+.carde h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #666;
 }
 
 .Marketing {
   display: flex;
   min-height: 100vh;
   padding: 20px;
-  width: 100vw;
+  width: 75vw;
 }
 
 .mark-content {
@@ -43,11 +49,16 @@
   gap: 20px;
 }
 
+.converstion {
+  height: "400px";
+}
+
 .chart-card {
   background: #ffffff;
   padding: 20px;
   flex: 1;
   border-radius: 12px;
+  height: 80vh;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
