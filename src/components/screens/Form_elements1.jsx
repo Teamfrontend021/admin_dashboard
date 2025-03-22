@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -10,33 +10,29 @@ import {
   Bar,
   Legend,
 } from "recharts";
-import axios from "axios";
 import "../styles/Form_elements1.css";
 
+const loginData = [
+  { name: "Jan", logins: 30000 },
+  { name: "Feb", logins: 25000 },
+  { name: "Mar", logins: 40000 },
+  { name: "Apr", logins: 28000 },
+  { name: "May", logins: 45000 },
+  { name: "Jun", logins: 32000 },
+  { name: "Jul", logins: 39000 },
+];
+
+const audienceData = [
+  { name: "Jan", Men: 600000, Women: 450000, NotSpecific: 300000 },
+  { name: "Feb", Men: 700000, Women: 520000, NotSpecific: 400000 },
+  { name: "Mar", Men: 800000, Women: 600000, NotSpecific: 500000 },
+  { name: "Apr", Men: 900000, Women: 750000, NotSpecific: 550000 },
+  { name: "May", Men: 650000, Women: 500000, NotSpecific: 450000 },
+  { name: "Jun", Men: 700000, Women: 520000, NotSpecific: 400000 },
+  { name: "Jul", Men: 750000, Women: 600000, NotSpecific: 480000 },
+];
+
 const Form_elements1 = () => {
-  const [loginData, setLoginData] = useState([]);
-  const [totalUsers, setTotalUsers] = useState(0);
-  const [newUsers, setNewUsers] = useState(0);
-
-  useEffect(() => {
-    // Fetch login analytics data
-    axios
-      .get("http://localhost:5000/login-analytics")
-      .then((response) => {
-        setLoginData(response.data);
-      })
-      .catch((error) => console.error("Error fetching login data:", error));
-
-    // Fetch user statistics
-    axios
-      .get("http://localhost:5000/user-stats")
-      .then((response) => {
-        setTotalUsers(response.data.totalUsers);
-        setNewUsers(response.data.newUsers);
-      })
-      .catch((error) => console.error("Error fetching user stats:", error));
-  }, []);
-
   return (
     <main className="form1-container">
       <div className="form1-content">
@@ -48,7 +44,7 @@ const Form_elements1 = () => {
           <div className="dropdown">2024-2025</div>
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={loginData}>
-              <XAxis dataKey="month" />
+              <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
               <Line
@@ -65,13 +61,12 @@ const Form_elements1 = () => {
         <div className="stats-container">
           <div className="stat-box">
             <h3>Total Count</h3>
-            <p>{totalUsers.toLocaleString()}</p>
+            <p>52,10,987</p>
           </div>
           <div className="stat-box">
             <h3>New Users This Year</h3>
             <p>
-              {newUsers.toLocaleString()}{" "}
-              <span className="positive-growth">+23%</span>
+              712,632 <span className="positive-growth">+23%</span>
             </p>
           </div>
         </div>
